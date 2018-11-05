@@ -1,4 +1,11 @@
 - project:
+    templates:
+      - openstack-python-jobs
+      - openstack-python35-jobs
+      - check-requirements
+      - publish-openstack-sphinx-docs
+      - release-notes-jobs
+      - deploy-guide-jobs
     check:
       jobs:
         - kolla-ansible-centos-source
@@ -62,7 +69,7 @@
     run: tests/run.yml
     post-run: tests/post.yml
     attempts: 1
-    timeout: 5400
+    timeout: 7200
     required-projects:
       - openstack/kolla
       - openstack/requirements
