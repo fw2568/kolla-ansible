@@ -83,7 +83,7 @@ function setup_ansible {
     RAW_INVENTORY=/etc/kolla/inventory
 
     # TODO(SamYaple): Move to virtualenv
-    sudo -H pip install -U "ansible>=2,<2.4" "docker>=2.0.0" "python-openstackclient" "python-neutronclient" "ara"
+    sudo -H pip install -U "ansible>=2,<2.4" "docker>=2.0.0" "python-openstackclient" "python-neutronclient" "ara<0.16" "cmd2<0.9.0"
     detect_distro
 
     sudo mkdir /etc/ansible
@@ -188,8 +188,5 @@ tools/kolla-ansible -i ${RAW_INVENTORY} -vvv upgrade > /tmp/logs/ansible/upgrade
 
 # run prechecks again
 tools/kolla-ansible -i ${RAW_INVENTORY} -vvv prechecks > /tmp/logs/ansible/prechecks2
-
-ara generate html /tmp/logs/playbook_reports/
-gzip --recursive --best /tmp/logs/playbook_reports/
 
 check_failure
